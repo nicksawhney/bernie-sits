@@ -36,7 +36,9 @@ def get_image(location : Union[str, tuple, int]):
 	resp = requests.get(signed_url)
 
 	print(resp.status_code)
-
+	#validate API request
+	if resp.status_code != 200:
+		return None
 	return resp.content
 
 
