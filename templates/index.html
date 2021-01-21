@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Put Bernie Anywhere!</title>
+</head>
+<body>
+    <title>
+        Put Bernie Anywhere In The World!
+    </title>
+    <h1> Enter an address or location and bernie will appear there. </h1>
+<!--     <img id='bern' src='/bernie.png'> -->
+    <form action="" method="post">
+        <p>
+            <label for="address/location">Address/Location</label>
+            <input type="text" name="address/location">
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+    </form>
+    {% if location %}
+    <p> Bernie at {{ location }}: </p>
+    {% endif %}
+    {% if image %}
+    <img id="picture" src="data:image/jpeg;base64,{{ image }}">
+    {% endif %}
+    <!-- <img src="data:image/jpg;base64, {{ image }}"> -->
+<!--     <img src= {{ image }}>
+
+ -->
+    <p> <i> a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank"> @nick_sawhney </a></i> <p>
+</body>
+</html>
