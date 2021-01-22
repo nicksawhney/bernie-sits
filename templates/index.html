@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Put Bernie Anywhere!</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=v3_site_key"></script>
 </head>
 <body>
     <title>
@@ -10,13 +11,19 @@
     </title>
     <h1> Enter an address or location and bernie will appear there. </h1>
 <!--     <img id='bern' src='/bernie.png'> -->
-    <form action="" method="post">
+    <form action="" method="post" id="location-form">
         <p>
             <label for="address/location">Address/Location</label>
             <input type="text" name="address/location">
         </p>
         <p>
-            <input type="submit">
+            <input 
+              class="g-recaptcha" 
+              data-sitekey="reCAPTCHA_site_key" 
+              data-callback="onSubmit" 
+              data-action="submit"
+              type="submit"
+            >
         </p>
     </form>
     {% if location %}
@@ -30,5 +37,10 @@
 
  -->
     <p> <i> a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank"> @nick_sawhney </a></i> <p>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("location-form").submit();
+      }
+    </script>
 </body>
 </html>
