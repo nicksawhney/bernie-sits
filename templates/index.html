@@ -2,33 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- This will change the address bar's theme for chrome android. -->
+    <meta name="theme-color" content=":#212121" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Put Bernie Anywhere!</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <title>
-        Put Bernie Anywhere In The World!
-    </title>
-    <h1> Enter an address or location and bernie will appear there. </h1>
-<!--     <img id='bern' src='/bernie.png'> -->
-    <form action="" method="post">
-        <p>
-            <label for="address/location">Address/Location</label>
-            <input type="text" name="address/location">
-        </p>
-        <p>
-            <input type="submit">
-        </p>
-    </form>
-    {% if location %}
-    <p> Bernie at {{ location }}: </p>
-    {% endif %}
-    {% if image %}
-    <img id="picture" src="data:image/jpeg;base64,{{ image }}">
-    {% endif %}
-    <!-- <img src="data:image/jpg;base64, {{ image }}"> -->
-<!--     <img src= {{ image }}>
+    
+    <div class="navbar">
+        <h1 class="title">bernie-sits</h1>
+    </div>
 
- -->
-    <p> <i> a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank"> @nick_sawhney </a></i> <p>
+    <div class="heading">
+        <h1> Enter an address or location and bernie will appear there.</h1>
+
+        <form action="" method="post" class="form">
+            <input type="text" name="address/location" placeholder="Address/Location" id="location-input">
+            <input type="submit" id="submit-btn">
+        </form>
+    </div>
+    
+    <div class="image-div">
+        {% if location %}
+            <p>Bernie at {{ location }}: </p>
+        {% endif %}
+        {% if image %}
+            <img id="picture" src="data:image/jpeg;base64,{{ image }}">
+        {% endif %}
+    </div>
+    
+    <div class="footer">
+        <p class="name">
+            A site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank"> @nick_sawhney </a> 
+        </p>
+    </div>
 </body>
 </html>
