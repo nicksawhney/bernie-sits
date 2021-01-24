@@ -29,4 +29,4 @@ def login():
 	return render_template('index.html', image=img_url.decode('utf-8'), location=location)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)

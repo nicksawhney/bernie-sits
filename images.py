@@ -14,9 +14,11 @@ API_URL = os.environ['API_URL']
 KEY = os.environ['KEY']
 SECRET = os.environ['SECRET']
 
-def get_image(location : Union[str, tuple, int]):
+def get_image(location : Union[str, tuple, int], sign=True):
 	'''
 	Gets image from `location` in the google street view API
+	
+	returns: bytesarray representing google maps jpg
 	'''
 
 	if type(location) is int:
@@ -27,22 +29,37 @@ def get_image(location : Union[str, tuple, int]):
 
 	s = requests.Session()
 	r = requests.Request('GET', API_URL, params={loc_param: location, 'size': '640x640', 'key': KEY}).prepare()
+
 	print(f'requesting from {r.url}')
 
-	signed_url = sign_url(input_url = r.url, secret=SECRET)
-	resp = requests.get(signed_url)
+	if sign:
+		url = sign_url(input_url=r.url, secret=SECRET)
+
+	else:
+		url = r.url
+
+	resp = requests.get(url)
 
 	print(resp.status_code)
 
 	return resp.content
 
 
-def add_bernie(img_bytes):
+def add_bernie(img_bytes, y_off=330, x_off=400):
+	'''
+	adds bernie to an image (defaults to offset in original bernie-sits app)
+	params:
+		img_bytes: a bytearray representing a jpg image of sixe 
+		x_off: bernie's x offset from left
+		y_off: bernie's y offset from top 
+
+	returns: 
+	'''
 	l_img = np.asarray(bytearray(img_bytes), dtype='uint8')
 	l_img = cv2.imdecode(l_img, cv2.IMREAD_COLOR)
 
-	y_offset = 330
-	x_offset = 400
+	y_offset = y_off
+	x_offset = x_off
 
 	s_img = BERNIE
 
@@ -71,6 +88,7 @@ if __name__ == '__main__':
 
 	parser.add_argument('fname', type=str, help='The filename for the bernie image (jpeg)')
 	parser.add_argument('location', type=str, help='The address to put bernie in front of')
+	parser.add_argument('-s', '--sign', type=bool, default=True, help='Whether or not to sign the url')
 
 	args = parser.parse_args()
 
