@@ -37,8 +37,11 @@ For production deployment, I used [gunicorn](https://gunicorn.org/).
 
 Since the site is down now, you can also use `images.py` as a command-line bernie meme creation tool with
 ```
-python images.py 'FILENAME.jpg' 'LOCATION'
+python images.py 'FILENAME.jpg' 'LOCATION' 
 ```
+
+If you plan on exceeding the rate limits or call cap, make sure to sign the url with `-s` or `--sign` (this also happens by default). If you're just doing this for fun, or want to look at a request url without the signature, you can use `-n` or `--no-sign`.
+
 
 `Procfile` and `Aptfile` are required to deploy with [Heroku](https://heroku.com/)
 
