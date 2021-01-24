@@ -45,7 +45,7 @@ python images.py 'FILENAME.jpg' 'LOCATION'
 ## Contribute!
 PRs and issues welcome!
 
-Please do not deploy without my permission!
+Please don't deploy without permission! I'm working on figuring out the proper licensing.
 
 ## Licensing
 This project will be licensed under the GNU General Public License (TODO: add licensing details)
