@@ -9,9 +9,15 @@ SECRET = 'YOUR-GOOGLE-SECRET'
 
 You might wanna rename the variables to not conflict with existing ones.
 
+Since the site is down now, you can also use `images.py` as a command-line bernie meme creation tool with:
+```
+python images.py 'FILENAME.jpg' 'LOCATION'
+```
+
 ## Contribute!
 PRs and issues welcome!
 
 Please do not deploy without my permission!
 
-##Licensing
+## Licensing
+This project will be licensed under the GNU General Public License (TODO: add licensing details)
