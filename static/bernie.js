@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const bernieImageEl = document.getElementById('bernie-src');
     const imageOut = document.getElementById('image-out');
     const locationImgEl = document.getElementById('location-img');
@@ -8,8 +7,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadButtonEl = document.getElementById('download');
     let bernieImageHeight = 0;
     let bernieImageWidth = 0;
+    let drawingContext = null;
+    let mousedDown = false;
 
-    const mimeType = 'image/png';
+    const draw = (y=400,x=330) => {
+      if (!drawingContext) {
+        drawingContext = canvasEl.getContext('2d');
+      }
+      canvasEl.width = locationImgEl.width;
+      canvasEl.height = locationImgEl.height;
+      drawingContext.drawImage(locationImgEl, 0, 0)
+      drawingContext.drawImage(bernieImageEl, y, x);
+    }
+
+    const downloadBernie = () => {
+      const dataUrl = canvas.toDataURL('image/jpeg');
+      const a  = document.createElement('a');
+      a.href = dataUrl;
+      const location = document.getElementById('location-input').value
+      a.download = `bernie-${location}.jpeg`;
+      a.click()
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -22,22 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       locationImgEl.src = objectURL;
     })
 
-    let locationImageData = null;
-    let bernieImageData = null;
-    let drawingContext = null;
-
-    const draw = (y=400,x=330) => {
-      if (!drawingContext) {
-        drawingContext = canvasEl.getContext('2d');
-      }
-      canvasEl.width = locationImgEl.width;
-      canvasEl.height = locationImgEl.height;
-      drawingContext.drawImage(locationImgEl, 0, 0)
-      drawingContext.drawImage(bernieImageEl, y, x);
-    }
-
-    let mousedDown = false;
-
     canvasEl.addEventListener('mousedown', (e) => {
       if (e.button == 0) {
         mousedDown = true
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     canvasEl.addEventListener('mouseup', () => {
-        mousedDown = false
+      mousedDown = false
     })
 
     canvasEl.addEventListener('mousemove', (e) => {
@@ -67,15 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
       bernieImageWidth = bernieImageEl.width;
       bernieImageHeight = bernieImageEl.height;
     })
-
-    const downloadBernie = () => {
-      const dataUrl = canvas.toDataURL('image/jpeg');
-      const a  = document.createElement('a');
-      a.href = dataUrl;
-      const location = document.getElementById('location-input').value
-      a.download = `bernie-${location}.jpeg`;
-      a.click()
-    }
 
     downloadButtonEl.addEventListener('click', downloadBernie)
 })
