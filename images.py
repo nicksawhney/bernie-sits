@@ -6,7 +6,7 @@ from io import BytesIO
 from sign import sign_url
 import os
 import argparse
-# from config import *
+
 
 BERNIE = cv2.imread('bernie.png', -1)
 
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 
 	
-	maps_image = get_image(args.location)
+	maps_image = get_image(args.location, sign=args.sign)
 	bernie_image = add_bernie(maps_image)
 
 	with open(args.fname, 'wb+') as f:
