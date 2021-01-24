@@ -20,10 +20,6 @@ def login():
 	if not location:
 		return render_template('index.html', image=False, location=False)
 
-	with open('img.jpeg', 'wb+') as f:
-		f.write(image.read())
-		image.seek(0)
-
 	img_url = base64.b64encode(image.getvalue())
 
 	return render_template('index.html', image=img_url.decode('utf-8'), location=location)
