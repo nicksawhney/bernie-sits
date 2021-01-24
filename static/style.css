@@ -1,0 +1,4 @@
+.main > img,
+.main > p {
+    display: inline-block;
+}
