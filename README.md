@@ -43,9 +43,11 @@ python images.py 'FILENAME.jpg' 'LOCATION'
 `Procfile` and `Aptfile` are required to deploy with [Heroku](https://heroku.com/)
 
 ## Contribute!
+Join me in [Discussions](https://github.com/nicksawhney/bernie-sits/discussions) to discuss the future of the site. We'll be maintaining an aesthetically and functionally identical version of the original viral site, and another souped-up version with all the features requested. Backend optimizations like caching can go in the original version. Still trying to decide which version should be `main`
+
 PRs and issues welcome!
 
-Please don't deploy without permission! I'm working on figuring out the proper licensing and crediting.
+Please don't deploy without permission! I'm working on figuring out the proper licensing and attributions for others to be able to deploy.
 
 ## Licensing
 TODO
