@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let drawingContext = null;
     let mousedDown = false;
 
-    const draw = (y=400,x=330) => {
+    const draw = (x=400, y=330) => {
       if (!drawingContext) {
         drawingContext = canvasEl.getContext('2d');
       }
       canvasEl.width = locationImgEl.width;
       canvasEl.height = locationImgEl.height;
       drawingContext.drawImage(locationImgEl, 0, 0)
-      drawingContext.drawImage(bernieImageEl, y, x);
+      drawingContext.drawImage(bernieImageEl, x, y);
     }
 
     const downloadBernie = () => {
-      const dataUrl = canvas.toDataURL('image/jpeg');
+      const dataUrl = canvasEl.toDataURL('image/jpeg');
       const a  = document.createElement('a');
       a.href = dataUrl;
       const location = document.getElementById('location-input').value
