@@ -48,7 +48,7 @@ PRs and issues welcome!
 Please don't deploy without permission! I'm working on figuring out the proper licensing and crediting.
 
 ## Licensing
-This project will be licensed under the GNU General Public License (TODO: add licensing details)
+TODO
 
 ## THANKS
 This has been insane. 9,849,938 Bernie memes were created during the lifetime of this site! 
