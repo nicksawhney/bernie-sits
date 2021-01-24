@@ -3,7 +3,7 @@
   "description": "An site that lets you put a picture of Bernie Sanders anywhere in the world",
   "repository": "https://github.com/nicksawhney/bernie-sits",
   "logo": "https://github.com/nicksawhney/bernie-sits/blob/main/static/bernie_large.png",
-  "keywords": ["bernie sanders", "bernie", "meme", "viral"]],
+  "keywords": ["bernie sanders", "bernie", "meme", "viral"],
   "env": {
  	"KEY": {
 	  "description": "Your Google API Key"
