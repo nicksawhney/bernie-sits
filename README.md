@@ -53,7 +53,7 @@ PRs and issues welcome!
 Please don't deploy without permission! I'm working on figuring out the proper licensing and attributions for others to be able to deploy.
 
 ## Licensing
-TODO
+TODO -- see [Issue #23](https://github.com/nicksawhney/bernie-sits/issues/23)
 
 ## THANKS
 This has been insane. 9,849,938 Bernie memes were created during the lifetime of this site! 
