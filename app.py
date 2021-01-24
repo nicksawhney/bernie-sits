@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, Response
 import base64
 import cv2
 import io
@@ -23,6 +23,13 @@ def login():
 	img_url = base64.b64encode(image.getvalue())
 
 	return render_template('index.html', image=img_url.decode('utf-8'), location=location)
+
+@app.route('/api', methods=['post'])
+def post():
+  location = request.form.get('address/location')
+  image = get_image(location)
+
+  return Response(image, mimetype='image/jpeg')
 
 if __name__ == '__main__':
 	app.run(debug=True)
