@@ -1,15 +1,17 @@
-I'll flesh this out once i'm done stopping the site from crashing lol
+# Bernie In Places
 
-To run, set the following environment variables
-```
-API_URL = 'https://maps.googleapis.com/maps/api/streetview'
-KEY = 'YOUR-MAPS-STREETVIEW-KEY'
-SECRET = 'YOUR-GOOGLE-SECRET'
-```
+An app that accidentally went viral! [Read the story in WIRED here](https://www.wired.com/story/bernie-sanders-meme-street-view-site/)
 
-You might wanna rename the variables to not conflict with existing ones.
 
 ## Running
+Set the following environment variables by adding the following lines to your `.bash_profile`, `.zshrc`, etc:
+```
+export API_URL='https://maps.googleapis.com/maps/api/streetview'
+export KEY='YOUR-MAPS-STREETVIEW-KEY'
+export SECRET='YOUR-GOOGLE-SECRET'
+```
+
+You might want to rename the variables to not conflict with existing ones.
 
 Make sure to `pip install -r requirements.txt`
 
