@@ -5,6 +5,7 @@ import numpy as np
 from io import BytesIO
 from sign import sign_url
 import os
+import argparse
 # from config import *
 
 BERNIE = cv2.imread('bernie.png', -1)
@@ -26,13 +27,9 @@ def get_image(location : Union[str, tuple, int]):
 
 	s = requests.Session()
 	r = requests.Request('GET', API_URL, params={loc_param: location, 'size': '640x640', 'key': KEY}).prepare()
-	print(r.url)
-
-	# print(r.status_code)
+	print(f'requesting from {r.url}')
 
 	signed_url = sign_url(input_url = r.url, secret=SECRET)
-	print(signed_url)
-
 	resp = requests.get(signed_url)
 
 	print(resp.status_code)
@@ -61,23 +58,25 @@ def add_bernie(img_bytes):
 
 	is_success, encoded_bytes = cv2.imencode('.jpeg', l_img)
 
-	print(is_success)
-
 	img_buf = BytesIO(encoded_bytes)
 	img_buf.seek(0)
 
 	return img_buf
 
-# filename = 'pikachu.png'
-# ironman = Image.open(filename, 'r')
-# filename1 = 'bg.png'
-# bg = Image.open(filename1, 'r')
-# text_img = Image.new('RGBA', (600,320), (0, 0, 0, 0))
-# text_img.paste(bg, (0,0))
-# text_img.paste(ironman, (0,0), mask=ironman)
-# text_img.save("ball.png", format="png")
 
 if __name__ == '__main__':
-	loc = input('Enter an Address: ')
+	parser = argparse.ArgumentParser(
+		description='Adds bernie to a google maps address, as seen in bernie sits'
+		'Ensure API_URL, KEY, and if needed SECRET are environment variables')
 
-	get_image(loc)
+	parser.add_argument('fname', type=str, help='The filename for the bernie image (jpeg)')
+	parser.add_argument('location', type=str, help='The address to put bernie in front of')
+
+	args = parser.parse_args()
+
+	
+	maps_image = get_image(args.location)
+	bernie_image = add_bernie(maps_image)
+
+	with open(args.fname, 'wb+') as f:
+		f.write(bernie_image.read())
