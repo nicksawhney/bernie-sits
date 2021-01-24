@@ -14,6 +14,8 @@ def sign_url(input_url=None, secret=None):
       secret    - Your URL signing secret
       Returns:
       The signed request URL
+
+      This code comes from the Google Cloud documentation for url signing.
   """
 
     if not input_url or not secret:
