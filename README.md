@@ -9,7 +9,15 @@ SECRET = 'YOUR-GOOGLE-SECRET'
 
 You might wanna rename the variables to not conflict with existing ones.
 
-Since the site is down now, you can also use `images.py` as a command-line bernie meme creation tool with:
+##Running
+Make sure to `pip install -r requirements.txt`
+
+Use `python app.py` to run the flask application on `localhost:5000`to debug. 
+
+For a production deployment. I used [gunicorn](https://gunicorn.org/). 
+
+
+Since the site is down now, you can also use `images.py` as a command-line bernie meme creation tool with::w
 ```
 python images.py 'FILENAME.jpg' 'LOCATION'
 ```
