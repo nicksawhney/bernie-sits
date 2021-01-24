@@ -10,7 +10,7 @@ import argparse
 
 BERNIE = cv2.imread('bernie.png', -1)
 
-API_URL = os.environ['API_URL']
+API_URL = 'https://maps.googleapis.com/maps/api/streetview'
 KEY = os.environ['KEY']
 SECRET = os.environ['SECRET']
 
