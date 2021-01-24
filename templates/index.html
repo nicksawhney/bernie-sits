@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <title>Put Bernie Anywhere!</title>
     <script src="https://www.google.com/recaptcha/api.js?render=*add key here*"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html {
+        font-size: 100%;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      p, input {
+        font-size: 1.2rem;
+      }
+    </style>
 </head>
 <body>
     <title>
         Put Bernie Anywhere In The World!
     </title>
     <h1> Enter an address or location and bernie will appear there. </h1>
-<!--     <img id='bern' src='/bernie.png'> -->
-    <form action="" method="post" id="location-form">
+    <form action="" method="post">
         <p>
             <label for="address/location">Address/Location</label>
             <input type="text" name="address/location">
@@ -32,11 +43,8 @@
     {% if image %}
     <img id="picture" src="data:image/jpeg;base64,{{ image }}">
     {% endif %}
-    <!-- <img src="data:image/jpg;base64, {{ image }}"> -->
-<!--     <img src= {{ image }}>
 
- -->
-    <p> <i> a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank"> @nick_sawhney </a></i> <p>
+    <p> <i> a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank">@nick_sawhney </a></i> <p>
     <script>
       function onSubmit(token) {
         document.getElementById("location-form").submit();

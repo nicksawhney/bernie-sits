@@ -5,17 +5,20 @@ import numpy as np
 from io import BytesIO
 from sign import sign_url
 import os
+import argparse
 # from config import *
 
 BERNIE = cv2.imread('bernie.png', -1)
 
-API_URL = os.environ['API_URL']
+API_URL = 'https://maps.googleapis.com/maps/api/streetview'
 KEY = os.environ['KEY']
 SECRET = os.environ['SECRET']
 
-def get_image(location : Union[str, tuple, int]):
+def get_image(location : Union[str, tuple, int], sign=True):
 	'''
 	Gets image from `location` in the google street view API
+	
+	returns: bytesarray representing google maps jpg
 	'''
 
 	if type(location) is int:
@@ -26,26 +29,37 @@ def get_image(location : Union[str, tuple, int]):
 
 	s = requests.Session()
 	r = requests.Request('GET', API_URL, params={loc_param: location, 'size': '640x640', 'key': KEY}).prepare()
-	print(r.url)
 
-	# print(r.status_code)
+	print(f'requesting from {r.url}')
 
-	signed_url = sign_url(input_url = r.url, secret=SECRET)
-	print(signed_url)
+	if sign:
+		url = sign_url(input_url=r.url, secret=SECRET)
 
-	resp = requests.get(signed_url)
+	else:
+		url = r.url
+
+	resp = requests.get(url)
 
 	print(resp.status_code)
 
 	return resp.content
 
 
-def add_bernie(img_bytes):
+def add_bernie(img_bytes, y_off=330, x_off=400):
+	'''
+	adds bernie to an image (defaults to offset in original bernie-sits app)
+	params:
+		img_bytes: a bytearray representing a jpg image of sixe 
+		x_off: bernie's x offset from left
+		y_off: bernie's y offset from top 
+
+	returns: 
+	'''
 	l_img = np.asarray(bytearray(img_bytes), dtype='uint8')
 	l_img = cv2.imdecode(l_img, cv2.IMREAD_COLOR)
 
-	y_offset = 330
-	x_offset = 400
+	y_offset = y_off
+	x_offset = x_off
 
 	s_img = BERNIE
 
@@ -61,23 +75,26 @@ def add_bernie(img_bytes):
 
 	is_success, encoded_bytes = cv2.imencode('.jpeg', l_img)
 
-	print(is_success)
-
 	img_buf = BytesIO(encoded_bytes)
 	img_buf.seek(0)
 
 	return img_buf
 
-# filename = 'pikachu.png'
-# ironman = Image.open(filename, 'r')
-# filename1 = 'bg.png'
-# bg = Image.open(filename1, 'r')
-# text_img = Image.new('RGBA', (600,320), (0, 0, 0, 0))
-# text_img.paste(bg, (0,0))
-# text_img.paste(ironman, (0,0), mask=ironman)
-# text_img.save("ball.png", format="png")
 
 if __name__ == '__main__':
-	loc = input('Enter an Address: ')
+	parser = argparse.ArgumentParser(
+		description='Adds bernie to a google maps address, as seen in bernie sits'
+		'Ensure API_URL, KEY, and if needed SECRET are environment variables')
 
-	get_image(loc)
+	parser.add_argument('fname', type=str, help='The filename for the bernie image (jpeg)')
+	parser.add_argument('location', type=str, help='The address to put bernie in front of')
+	parser.add_argument('-s', '--sign', type=bool, default=True, help='Whether or not to sign the url')
+
+	args = parser.parse_args()
+
+	
+	maps_image = get_image(args.location)
+	bernie_image = add_bernie(maps_image)
+
+	with open(args.fname, 'wb+') as f:
+		f.write(bernie_image.read())
