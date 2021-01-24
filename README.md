@@ -5,7 +5,7 @@ An app that accidentally went viral! [Read the story in WIRED here](https://www.
 
 ## Install 
 
-First, create a pythin virtual environment, and install all of the depenedencies. 
+First, create a python virtual environment, and install all of the depenedencies. 
 ```
 python3 -m venv ve
 source ve/bin/activate
