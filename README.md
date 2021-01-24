@@ -9,7 +9,8 @@ SECRET = 'YOUR-GOOGLE-SECRET'
 
 You might wanna rename the variables to not conflict with existing ones.
 
-##Running
+## Running
+
 Make sure to `pip install -r requirements.txt`
 
 Use `python app.py` to run the flask application on `localhost:5000`to debug. 
