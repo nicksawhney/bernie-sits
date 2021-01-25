@@ -46,7 +46,9 @@ If you plan on exceeding the rate limits or call cap, make sure to sign the url 
 `Procfile` and `Aptfile` are required to deploy with [Heroku](https://heroku.com/)
 
 ## Contribute!
-Join me in [Discussions](https://github.com/nicksawhney/bernie-sits/discussions) to discuss the future of the site. We'll be maintaining an aesthetically and functionally identical version of the original viral site, and another souped-up version with all the features requested. Backend optimizations like caching can go in the original version. Still trying to decide which version should be `main`
+I'd like to make a self-sustaining version of this site that automatically tracks crowdfunding vs api/other site costs and pulls core functionality when funding dips, bringing it back when funding returns. Check out the idea and contribute to the discussion! 
+
+Also join me in [Discussions](https://github.com/nicksawhney/bernie-sits/discussions) to discuss the future of the site. We'll be maintaining an aesthetically and functionally identical version of the original viral site, and another souped-up version with all the features requested. Backend optimizations like caching can go in the original version. Still trying to decide which version should be `main`
 
 PRs and issues welcome!
 
