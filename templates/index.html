@@ -15,28 +15,26 @@
         font-size: 1.2rem;
       }
     </style>
+    <script src="/static/bernie.js"></script>
 </head>
 <body>
     <title>
         Put Bernie Anywhere In The World!
     </title>
     <h1> Enter an address or location and bernie will appear there. </h1>
-    <form action="" method="post">
+    <form id="form" action="/api" method="post">
         <p>
             <label for="address/location">Address/Location</label>
-            <input type="text" name="address/location">
+            <input id='location-input' type="text" name="address/location">
         </p>
         <p>
             <input type="submit">
         </p>
     </form>
-    {% if location %}
-    <p> Bernie at {{ location }}: </p>
-    {% endif %}
-    {% if image %}
-    <img id="picture" src="data:image/jpeg;base64,{{ image }}">
-    {% endif %}
-
+    <img hidden id='bernie-src' src='static/bernie.png'/>
+    <img hidden id='location-img'/>
+    <p><button hidden id='download'>Download Bernie</button></p>
+    <canvas id='canvas'></canvas>
     <p> <i>a site by Nick Sawhney <a href="https://twitter.com/nick_sawhney" target="_blank">@nick_sawhney</a></i> <p>
 </body>
 </html>
