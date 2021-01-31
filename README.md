@@ -5,7 +5,9 @@ An app that accidentally went viral! [Read the story in WIRED here](https://www.
 
 ## Install 
 
-First, create a python virtual environment, and install all of the depenedencies. 
+First, setup the project and create a topic branch using "git clone" and "git checkout". More details can be found at [GitHub- Contributing to a project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
+
+Next up, create a python virtual environment, and install all of the dependencies. 
 ```
 python3 -m venv ve
 source ve/bin/activate
