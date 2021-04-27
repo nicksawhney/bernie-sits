@@ -71,14 +71,6 @@ def add_bernie(img_bytes):
 
     return img_buf
 
-# filename = 'pikachu.png'
-# ironman = Image.open(filename, 'r')
-# filename1 = 'bg.png'
-# bg = Image.open(filename1, 'r')
-# text_img = Image.new('RGBA', (600,320), (0, 0, 0, 0))
-# text_img.paste(bg, (0,0))
-# text_img.paste(ironman, (0,0), mask=ironman)
-# text_img.save("ball.png", format="png")
 
 if __name__ == '__main__':
     loc = input('Enter an Address: ')

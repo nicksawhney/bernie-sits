@@ -15,12 +15,14 @@ def login():
 	location = ''
 	if request.method == 'POST':
 		location = request.form.get('address/location')
+	else:
+		location = request.args.get('address/location')
+		
+	if not location:
+		return render_template('index.html', image=False, location = False)
 
-		if not location:
-			return render_template('index.html', image=False, location = False)
-
-		img_bytes = get_image(location)
-		image = add_bernie(img_bytes)
+	img_bytes = get_image(location)
+	image = add_bernie(img_bytes)
 
 	if not image:
 		return render_template('index.html', image=None, location=None)
